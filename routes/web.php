@@ -17,4 +17,4 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('rental-kriteria', 'Controller@createRentalKriteria');
+$router->post('hitung-topsis', 'Controller@hitungTopsis');

@@ -10,4 +10,9 @@ class RentalKriteria extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
+
+    public function kriteria()
+    {
+        return $this->hasOne('App\Models\Kriteria', 'id', 'id_kriteria');
+    }
 }

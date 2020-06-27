@@ -15,11 +15,13 @@ class DefaultSeeder extends Seeder
         DB::table('petani')->insert(
             [
                 [
+                    'id' => 1,
                     'nama' => "Doni Setiawan",
                     'created_at' => date('Y-m-d H:m:s'),
                     'updated_at' => date('Y-m-d H:m:s'),
                 ],
                 [
+                    'id' => 2,
                     "nama" => 'Eko Suhartono',
                     'created_at' => date('Y-m-d H:m:s'),
                     'updated_at' => date('Y-m-d H:m:s'),
@@ -30,6 +32,7 @@ class DefaultSeeder extends Seeder
         DB::table('rental')->insert(
             [
                 [
+                    'id' => 1,
                     "nama" => "Budi Setiawan",
                     "jenis_truk" => "Mobil Pickup",
                     "alamat" => "Jl Keputih Tegal Surabaya",
@@ -39,6 +42,7 @@ class DefaultSeeder extends Seeder
                     'updated_at' => date('Y-m-d H:m:s'),
                 ],
                 [
+                    'id' => 2,
                     "nama" => "Tono Setyono",
                     "jenis_truk" => "Colt Diesel",
                     "alamat" => "Jl Medokan Semampir Surabaya",
@@ -48,6 +52,7 @@ class DefaultSeeder extends Seeder
                     'updated_at' => date('Y-m-d H:m:s'), 
                 ],
                 [
+                    'id' => 3,
                     "nama" => "Dendi Sulistyo",
                     "jenis_truk" => "Truk Fuso Engkel",
                     "alamat" => "Jl Medokan Semampir Surabaya",
@@ -62,6 +67,7 @@ class DefaultSeeder extends Seeder
         DB::table('kriteria')->insert(
             [
                 [
+                    'id' => 1,
                     "kode" =>  "C1",
                     "nama" =>  "Kapasitas Muatan",
                     "satuan" => "TON",
@@ -73,6 +79,7 @@ class DefaultSeeder extends Seeder
                     'updated_at' => date('Y-m-d H:m:s'),
                 ],
                 [
+                    'id' => 2,
                     "kode" =>  "C1",
                     "nama" =>  "Kapasitas Muatan",
                     "satuan" => "TON",
@@ -84,6 +91,7 @@ class DefaultSeeder extends Seeder
                     'updated_at' => date('Y-m-d H:m:s'),
                 ],
                 [
+                    'id' => 3,
                     "kode" =>  "C1",
                     "nama" =>  "Kapasitas Muatan",
                     "satuan" => "TON",
@@ -96,6 +104,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 4,
                     "kode" => "C2",
                     "nama" => "Kapasitas Mesin",
                     "satuan" => "CC",
@@ -109,6 +118,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 5,
                     "kode" => "C2",
                     "nama" => "Kapasitas Mesin",
                     "satuan" => "CC",
@@ -122,6 +132,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 6,
                     "kode" => "C2",
                     "nama" => "Kapasitas Mesin",
                     "satuan" => "CC",
@@ -135,6 +146,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 7,
                     "kode"=> "C3",
                     "nama"=> "Harga Sewa",
                     "satuan" => "Rp",
@@ -147,6 +159,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 8,
                     "kode"=> "C3",
                     "nama"=> "Harga Sewa",
                     "satuan" => "Rp",
@@ -158,6 +171,7 @@ class DefaultSeeder extends Seeder
                     'updated_at' => date('Y-m-d H:m:s'),
                 ],
                 [
+                    'id' => 9,
                     "kode"=> "C3",
                     "nama"=> "Harga Sewa",
                     "satuan" => "Rp",
@@ -170,6 +184,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 10,
                     "kode"=> "C4",
                     "nama"=> "Jarak",
                     "satuan" => "KM",
@@ -182,6 +197,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 11,
                     "kode"=> "C4",
                     "nama"=> "Jarak",
                     "satuan" => "KM",
@@ -194,6 +210,7 @@ class DefaultSeeder extends Seeder
                 ],
 
                 [
+                    'id' => 12,
                     "kode"=> "C4",
                     "nama"=> "Jarak",
                     "satuan" => "KM",
@@ -205,7 +222,106 @@ class DefaultSeeder extends Seeder
                     'updated_at' => date('Y-m-d H:m:s'),
                 ]
             ]
-                );
+        );
+
+        DB::table('rental_kriteria')->insert([
+            [
+                'id' => 1,
+                'id_rental' => 1,
+                'id_kriteria' => 2,
+                'input_nilai' => 3,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 2,
+                'id_rental' => 1,
+                'id_kriteria' => 4,
+                'input_nilai' => 1800,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 3,
+                'id_rental' => 1,
+                'id_kriteria' => 7,
+                'input_nilai' => 300000,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 4,
+                'id_rental' => 1,
+                'id_kriteria' => 10,
+                'input_nilai' => 10,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 6,
+                'id_rental' => 2,
+                'id_kriteria' => 2,
+                'input_nilai' => 3,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 7,
+                'id_rental' => 2,
+                'id_kriteria' => 6,
+                'input_nilai' => 5000,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 8,
+                'id_rental' => 2,
+                'id_kriteria' => 9,
+                'input_nilai' => 1500000,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 9,
+                'id_rental' => 2,
+                'id_kriteria' => 10,
+                'input_nilai' => 18,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 10,
+                'id_rental' => 3,
+                'id_kriteria' => 3,
+                'input_nilai' => 10,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 11,
+                'id_rental' => 3,
+                'id_kriteria' => 5,
+                'input_nilai' => 2500,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 12,
+                'id_rental' => 3,
+                'id_kriteria' => 9,
+                'input_nilai' => 1200000,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 13,
+                'id_rental' => 3,
+                'id_kriteria' => 11,
+                'input_nilai' => 25,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ]
+        ]);
 
     }
 }
