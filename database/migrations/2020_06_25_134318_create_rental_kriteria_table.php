@@ -18,7 +18,7 @@ class CreateRentalKriteriaTable extends Migration
             $table->unsignedBigInteger('id_rental');
             $table->unsignedBigInteger('id_kriteria');
 
-            $table->bigInteger("input_nilai");
+            $table->double("input_nilai");
             
             $table->foreign('id_rental')->references('id')->on('rental');
             $table->foreign('id_kriteria')->references('id')->on('kriteria');

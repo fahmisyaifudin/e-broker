@@ -20,8 +20,8 @@ class CreateKriteriaTable extends Migration
             $table->string("satuan");
             $table->enum('keterangan', ['benefit', 'cost']);
             $table->string("himpunan");
-            $table->integer("interval_min");
-            $table->integer("interval_max");
+            $table->double("interval_min");
+            $table->double("interval_max");
             $table->string("fuzzy")->nullable();
             $table->timestamps();
         });
