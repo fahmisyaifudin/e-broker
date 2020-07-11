@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\Kriteria;
+use App\Models\Rental;
 use App\Models\RentalKriteria;
+use Illuminate\Support\Arr;
 
 class Controller extends BaseController
 {
@@ -215,11 +217,21 @@ class Controller extends BaseController
             'matrikTernormalisasi' => $matriksTernormalisasi,
             'matrikTerbobot' => $matriksTerbobot,
             'idealPositif' => $idealPositif,
+            'idealNegatif' => $idealNegatif,
             'dPlus' => $dPlus,
             'dMin' => $dMin,
             'nilaiPreferensi' => $nilaiPreferensi,
             'rangking' => $rangking
         ], 200);
 
+    }
+    public function getKendaraan(){
+        $rental = Rental::select('id', 'jenis_truk')->get();
+        $names = Arr::pluck($rental, 'jenis_truk', 'id');
+        return response()->json([
+            'status' => 200,
+            'message' => 'success',
+            'data' => $names
+        ]);
     }
 }

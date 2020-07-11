@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../assets/bootstrap.min.css">
+    <script src="../../assets/angular.min.js"></script>
+
+    <title>Hello, world!</title>
+  </head>
+  <body ng-controller="TopsisController">
+    <div class="container">
+      <h3 class="text-center mt-4">{{ title }}</h3>
+
+      <form>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Kapasitas Muatan</label>
+              <select class="form-control" ng-model="bobot[0]">
+                <option value="0">Tidak Penting</option>
+                <option value="0.25">Kurang Penting</option>
+                <option value="0.5">Cukup Penting</option>
+                <option value="0.75">Penting</option>
+                <option value="1">Sangat Penting</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Kapasitas Mesin</label>
+              <select class="form-control" ng-model="bobot[1]">
+                <option value="0">Tidak Penting</option>
+                <option value="0.25">Kurang Penting</option>
+                <option value="0.5">Cukup Penting</option>
+                <option value="0.75">Penting</option>
+                <option value="1">Sangat Penting</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Harga Sewa</label>
+              <select class="form-control" ng-model="bobot[2]">
+                <option value="0">Tidak Penting</option>
+                <option value="0.25">Kurang Penting</option>
+                <option value="0.5">Cukup Penting</option>
+                <option value="0.75">Penting</option>
+                <option value="1">Sangat Penting</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Tahun</label>
+              <select class="form-control" ng-model="bobot[3]">
+                <option value="0">Tidak Penting</option>
+                <option value="0.25">Kurang Penting</option>
+                <option value="0.5">Cukup Penting</option>
+                <option value="0.75">Penting</option>
+                <option value="1">Sangat Penting</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Jarak</label>
+              <select class="form-control" ng-model="bobot[4]">
+                <option value="0">Tidak Penting</option>
+                <option value="0.25">Kurang Penting</option>
+                <option value="0.5">Cukup Penting</option>
+                <option value="0.75">Penting</option>
+                <option value="1">Sangat Penting</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-1"></div>
+          <button class="col-md-10 btn btn-primary btn-block" ng-click="actionProses()">Proses</button>
+          <div class="col-md-1"></div>
+        </div>
+      </form>
+
+      <div class="mt-4">
+        <h3>Matrik Ternormalisasi</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama Kendaraan</th>
+              <th scope="col" ng-repeat="kriteria in kriterias">{{ kriteria.nama + ' ( ' +kriteria.satuan + ' )'}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, matrik) in matrikTernormalisasi">
+              <th scope="row">{{ $index + 1}}</th>
+              <td>{{ kendaraan[key] }}</td>
+              <td ng-repeat="m in matrik">{{ m }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
+        <h3>Matrik Terbobot</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama Kendaraan</th>
+              <th scope="col" ng-repeat="kriteria in kriterias">{{ kriteria.nama + ' ( ' +kriteria.satuan + ' )'}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, matrik) in matrikTerbobot">
+              <th scope="row">{{ $index + 1}}</th>
+              <td>{{ kendaraan[key] }}</td>
+              <td ng-repeat="m in matrik">{{ m }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
+        <h3>Ideal Positif</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" ng-repeat="kriteria in kriterias">{{ kriteria.nama + ' ( ' +kriteria.satuan + ' )'}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td ng-repeat="ideal in idealPositif">{{ ideal }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
+        <h3>Ideal Negatif</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" ng-repeat="kriteria in kriterias">{{ kriteria.nama + ' ( ' +kriteria.satuan + ' )'}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td ng-repeat="ideal in idealNegatif">{{ ideal }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
+        <h3>D +</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama Kendaraan</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, matrik) in dPlus">
+              <th scope="row">{{ $index + 1}}</th>
+              <td>{{ kendaraan[key] }}</td>
+              <td>{{ matrik }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
+        <h3>D -</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama Kendaraan</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, matrik) in dMin">
+              <th scope="row">{{ $index + 1}}</th>
+              <td>{{ kendaraan[key] }}</td>
+              <td>{{ matrik }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
+        <h3>Nilai Preferensi</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Nama Kendaraan</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, matrik) in nilaiPreferensi">
+              <td>{{ kendaraan[key] }}</td>
+              <td>{{ matrik }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
+        <h3>Rangking</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Rangking</th>
+              <th scope="col">Nama Kendaraan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, matrik) in rangking">
+              <th scope="row">{{ $index + 1}}</th>
+              <td>{{ getRangking(matrik) }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+    <script src="../../assets/jquery-3.5.1.slim.min.js"></script>
+    <script src="../../assets/popper.min.js"></script>
+    <script src="../../assets//bootstrap.min.js"></script>
+    <script>
+
+    angular.module('app', [])
+      .controller('TopsisController', ['$scope', '$http', function($scope, $http) {
+        const base_url = 'http://localhost:8080';
+        $scope.title = 'Topsis';
+
+        $http({
+          url: base_url + '/get-kendaraan',
+          method: 'GET'
+        }).then(function(res) {
+            $scope.kendaraan = res.data.data;
+        })
+
+        $scope.kriterias = [
+          {
+            nama: "Kapasitas Muatan",
+            satuan: 'TON'
+          },
+          {
+            nama: "Kapasitas Mesin",
+            satuan: 'CC'
+          },
+          {
+            nama: "Harga Sewa",
+            satuan: 'Rp'
+          },
+          {
+            nama: "Tahun"
+          },
+          {
+            nama: "Jarak",
+            satuan: 'KM'
+          }
+        ]
+
+        $scope.getRangking = function(params) {
+          return $scope.kendaraan[params];
+        }
+        
+        $scope.actionProses = function() {
+            let input = Object.values($scope.bobot)
+             $http({
+              url: base_url + '/hitung-topsis',
+              method: 'POST',
+              data: {
+                bobot: input
+              }
+            }).then(function(res) {
+              $scope.matrikTernormalisasi = res.data.matrikTernormalisasi;
+              $scope.matrikTerbobot = res.data.matrikTerbobot;
+              $scope.idealPositif = res.data.idealPositif;
+              $scope.idealNegatif = res.data.idealNegatif;
+              $scope.dPlus = res.data.dPlus;
+              $scope.dMin = res.data.dMin;
+              $scope.nilaiPreferensi = res.data.nilaiPreferensi;
+              $scope.rangking = res.data.rangking;
+
+            })
+        }
+      }]);
+
+    </script>
+  </body>
+</html>

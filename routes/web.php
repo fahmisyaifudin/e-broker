@@ -18,3 +18,4 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('hitung-topsis', 'Controller@hitungTopsis');
+$router->get('get-kendaraan', 'Controller@getKendaraan');
