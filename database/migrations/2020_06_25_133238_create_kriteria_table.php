@@ -22,7 +22,6 @@ class CreateKriteriaTable extends Migration
             $table->string("himpunan");
             $table->double("interval_min");
             $table->double("interval_max");
-            $table->string("fuzzy")->nullable();
             $table->timestamps();
         });
     }
