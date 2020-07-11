@@ -171,6 +171,17 @@ class Controller extends BaseController
         return $nilaiPreferensi;
     }
 
+    public function rangking($nilaiPreferensi){
+        $arrNilaiPreferensi = (array) $nilaiPreferensi;      
+        arsort($arrNilaiPreferensi);
+        
+        foreach ($arrNilaiPreferensi as $key => $value) {
+            $rangking[] = $key;
+        }
+
+        return $rangking;
+    }
+
 
     public function hitungTopsis(Request $request){
         $input = $request->all();
@@ -196,7 +207,7 @@ class Controller extends BaseController
 
         $nilaiPreferensi = $this->nilaiPreferensi($dPlus, $dMin);
 
-        
+        $rangking = $this->rangking($nilaiPreferensi);
 
         return response()->json([
             'status' => 200,
@@ -206,7 +217,8 @@ class Controller extends BaseController
             'idealPositif' => $idealPositif,
             'dPlus' => $dPlus,
             'dMin' => $dMin,
-            'nilaiPreferensi' => $nilaiPreferensi
+            'nilaiPreferensi' => $nilaiPreferensi,
+            'rangking' => $rangking
         ], 200);
 
     }

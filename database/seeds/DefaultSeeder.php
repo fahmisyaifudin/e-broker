@@ -744,7 +744,7 @@ class DefaultSeeder extends Seeder
             ],
             [
                 'id' => 25,
-                'id_rental' => 6,
+                'id_rental' => 5,
                 'id_kriteria' => 28,
                 'input_nilai' => 25,
                 'created_at' => date('Y-m-d H:m:s'),
