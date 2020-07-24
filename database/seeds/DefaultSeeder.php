@@ -1162,5 +1162,273 @@ class DefaultSeeder extends Seeder
             ]
         ]);
 
+        DB::table('kriteria_fuzzy')->insert([
+            [
+                'id' => 1,
+                'id_kriteria' => 1,
+                'fuzzy_num_a' => 0.0,
+                'fuzzy_num_b' => 0.0,
+                'fuzzy_num_c' => 0.1,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 2,
+                'id_kriteria' => 2,
+                'fuzzy_num_a' => 0.0,
+                'fuzzy_num_b' => 0.1,
+                'fuzzy_num_c' => 0.3,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 3,
+                'id_kriteria' => 3,
+                'fuzzy_num_a' => 0.1,
+                'fuzzy_num_b' => 0.3,
+                'fuzzy_num_c' => 0.5,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 4,
+                'id_kriteria' => 4,
+                'fuzzy_num_a' => 0.3,
+                'fuzzy_num_b' => 0.5,
+                'fuzzy_num_c' => 0.7,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 5,
+                'id_kriteria' => 5,
+                'fuzzy_num_a' => 0.5,
+                'fuzzy_num_b' => 0.7,
+                'fuzzy_num_c' => 0.9,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 6,
+                'id_kriteria' => 6,
+                'fuzzy_num_a' => 0.7,
+                'fuzzy_num_b' => 0.9,
+                'fuzzy_num_c' => 1.0,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 7,
+                'id_kriteria' => 7,
+                'fuzzy_num_a' => 0.9,
+                'fuzzy_num_b' => 1.0,
+                'fuzzy_num_c' => 1.0,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+
+            [
+                'id' => 8,
+                'id_kriteria' => 8,
+                'fuzzy_num_a' => 0.0,
+                'fuzzy_num_b' => 0.0,
+                'fuzzy_num_c' => 0.1,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 9,
+                'id_kriteria' => 9,
+                'fuzzy_num_a' => 0.0,
+                'fuzzy_num_b' => 0.1,
+                'fuzzy_num_c' => 0.3,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 10,
+                'id_kriteria' => 10,
+                'fuzzy_num_a' => 0.1,
+                'fuzzy_num_b' => 0.3,
+                'fuzzy_num_c' => 0.5,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 11,
+                'id_kriteria' => 11,
+                'fuzzy_num_a' => 0.3,
+                'fuzzy_num_b' => 0.5,
+                'fuzzy_num_c' => 0.7,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 12,
+                'id_kriteria' => 12,
+                'fuzzy_num_a' => 0.5,
+                'fuzzy_num_b' => 0.7,
+                'fuzzy_num_c' => 0.9,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 13,
+                'id_kriteria' => 13,
+                'fuzzy_num_a' => 0.7,
+                'fuzzy_num_b' => 0.9,
+                'fuzzy_num_c' => 1.0,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 14,
+                'id_kriteria' => 14,
+                'fuzzy_num_a' => 0.9,
+                'fuzzy_num_b' => 1.0,
+                'fuzzy_num_c' => 1.0,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+
+            [
+                'id' => 15,
+                'id_kriteria' => 15,
+                'fuzzy_num_a' => 0.1,
+                'fuzzy_num_b' => 0.1,
+                'fuzzy_num_c' => 0.3,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 16,
+                'id_kriteria' => 16,
+                'fuzzy_num_a' => 0.1,
+                'fuzzy_num_b' => 0.3,
+                'fuzzy_num_c' => 0.5,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 17,
+                'id_kriteria' => 17,
+                'fuzzy_num_a' => 0.3,
+                'fuzzy_num_b' => 0.5,
+                'fuzzy_num_c' => 0.7,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 18,
+                'id_kriteria' => 18,
+                'fuzzy_num_a' => 0.5,
+                'fuzzy_num_b' => 0.7,
+                'fuzzy_num_c' => 0.9,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 19,
+                'id_kriteria' => 19,
+                'fuzzy_num_a' => 0.7,
+                'fuzzy_num_b' => 0.9,
+                'fuzzy_num_c' => 0.9,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+
+            [
+                'id' => 20,
+                'id_kriteria' => 20,
+                'fuzzy_num_a' => 0.0,
+                'fuzzy_num_b' => 0.0,
+                'fuzzy_num_c' => 0.25,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 21,
+                'id_kriteria' => 21,
+                'fuzzy_num_a' => 0.0,
+                'fuzzy_num_b' => 0.25,
+                'fuzzy_num_c' => 0.5,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 22,
+                'id_kriteria' => 22,
+                'fuzzy_num_a' => 0.25,
+                'fuzzy_num_b' => 0.5,
+                'fuzzy_num_c' => 0.75,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 23,
+                'id_kriteria' => 23,
+                'fuzzy_num_a' => 0.5,
+                'fuzzy_num_b' => 0.75,
+                'fuzzy_num_c' => 1.0,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 24,
+                'id_kriteria' => 24,
+                'fuzzy_num_a' => 0.75,
+                'fuzzy_num_b' => 1.0,
+                'fuzzy_num_c' => 1.0,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+
+            [
+                'id' => 25,
+                'id_kriteria' => 25,
+                'fuzzy_num_a' => 0.1,
+                'fuzzy_num_b' => 0.1,
+                'fuzzy_num_c' => 0.3,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 26,
+                'id_kriteria' => 26,
+                'fuzzy_num_a' => 0.1,
+                'fuzzy_num_b' => 0.3,
+                'fuzzy_num_c' => 0.5,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 27,
+                'id_kriteria' => 27,
+                'fuzzy_num_a' => 0.3,
+                'fuzzy_num_b' => 0.5,
+                'fuzzy_num_c' => 0.7,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 28,
+                'id_kriteria' => 28,
+                'fuzzy_num_a' => 0.5,
+                'fuzzy_num_b' => 0.7,
+                'fuzzy_num_c' => 0.9,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ],
+            [
+                'id' => 29,
+                'id_kriteria' => 29,
+                'fuzzy_num_a' => 0.7,
+                'fuzzy_num_b' => 0.9,
+                'fuzzy_num_c' => 0.9,
+                'created_at' => date('Y-m-d H:m:s'),
+                'updated_at' => date('Y-m-d H:m:s')
+            ]
+        ]);
+
     }
 }
