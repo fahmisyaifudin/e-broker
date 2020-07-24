@@ -19,3 +19,5 @@ $router->get('/', function () use ($router) {
 
 $router->post('hitung-topsis', 'Controller@hitungTopsis');
 $router->get('get-kendaraan', 'Controller@getKendaraan');
+
+$router->post('fuzzy-topsis', 'FuzzyTopsisController@index');
