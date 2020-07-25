@@ -89,6 +89,28 @@
       </form>
 
       <div class="mt-4">
+        <h3>Matrik Keputusan</h3>
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nama Kendaraan</th>
+              <th scope="col" ng-repeat="kriteria in kriterias">{{ kriteria.nama + ' ( ' +kriteria.satuan + ' )'}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, matrik) in matriks">
+              <th scope="row">{{ $index + 1}}</th>
+              <td>{{ kendaraan[key] }}</td>
+              <td ng-repeat="m in matrik">{{ m }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="mt-4">
         <h3>Matrik Ternormalisasi</h3>
 
         <table class="table table-bordered mt-4">
@@ -309,6 +331,7 @@
                 bobot: input
               }
             }).then(function(res) {
+              $scope.matriks = res.data.matrik;
               $scope.matrikTernormalisasi = res.data.matrikTernormalisasi;
               $scope.matrikTerbobot = res.data.matrikTerbobot;
               $scope.idealPositif = res.data.idealPositif;

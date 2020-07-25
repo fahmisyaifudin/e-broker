@@ -278,7 +278,7 @@ class DefaultSeeder extends Seeder
                     "satuan" => "CC",
                     "keterangan" => "benefit",
                     "interval_min" => 0,
-                    "interval_max" =>  1500,
+                    "interval_max" =>  1499,
                     "himpunan" => "Sangat Sedikit",
                     'created_at' => date('Y-m-d H:m:s'),
                     'updated_at' => date('Y-m-d H:m:s'),
@@ -377,7 +377,7 @@ class DefaultSeeder extends Seeder
                     "nama"=> "Harga Sewa",
                     "satuan" => "Rp",
                     "keterangan" => "cost",
-                    "interval_min" => 300000,
+                    "interval_min" => 240000,
                     "interval_max" =>  349999,
                     "himpunan" => "Cukup Murah",
                     'created_at' => date('Y-m-d H:m:s'),
@@ -564,7 +564,7 @@ class DefaultSeeder extends Seeder
             [
                 'id' => 3,
                 'id_rental' => 1,
-                'id_kriteria' => 15,
+                'id_kriteria' => 16,
                 'input_nilai' => 240000,
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
@@ -950,7 +950,7 @@ class DefaultSeeder extends Seeder
             [
                 'id' => 50,
                 'id_rental' => 10,
-                'id_kriteria' => 2,
+                'id_kriteria' => 28,
                 'input_nilai' => 19,
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')

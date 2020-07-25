@@ -10,4 +10,9 @@ class Kriteria extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
+
+    public function fuzzy()
+    {
+        return $this->belongsTo('App\Models\Fuzzy', 'id', 'id_kriteria');
+    }
 }

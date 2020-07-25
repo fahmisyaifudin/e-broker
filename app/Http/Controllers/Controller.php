@@ -214,6 +214,7 @@ class Controller extends BaseController
         return response()->json([
             'status' => 200,
             'message' => 'success',
+            'matrik' => $matriks,
             'matrikTernormalisasi' => $matriksTernormalisasi,
             'matrikTerbobot' => $matriksTerbobot,
             'idealPositif' => $idealPositif,
