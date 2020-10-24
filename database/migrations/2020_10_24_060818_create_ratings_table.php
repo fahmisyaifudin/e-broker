@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRentalKriteriaTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateRentalKriteriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('rental_kriteria', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('ratings', function (Blueprint $table) {
+            $table->id();
+
             $table->unsignedBigInteger('id_rental');
-            $table->unsignedBigInteger('id_kriteria');
+            $table->unsignedBigInteger('id_petani');
 
-            $table->double("input_nilai");
+            $table->double('nilai');
 
-            $table->unsignedBigInteger('id_petani')->nullable();
-            
             $table->foreign('id_rental')->references('id')->on('rental');
             $table->foreign('id_petani')->references('id')->on('petani');
-            $table->foreign('id_kriteria')->references('id')->on('kriteria');
-            
+
             $table->timestamps();
         });
     }
@@ -37,6 +35,6 @@ class CreateRentalKriteriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rental_kriteria');
+        Schema::dropIfExists('ratings');
     }
 }

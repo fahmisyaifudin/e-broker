@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetanisTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatePetanisTable extends Migration
      */
     public function up()
     {
-        Schema::create('petani', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
-            $table->unsignedBigInteger('id_user');
-        
-            $table->string('nama');
-            $table->foreign('id_user')->references('id')->on('users');
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->enum('level', ['PETANI', 'RENTAL']);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreatePetanisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('petani');
+        Schema::dropIfExists('users');
     }
 }

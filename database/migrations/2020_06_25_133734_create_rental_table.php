@@ -15,12 +15,18 @@ class CreateRentalTable extends Migration
     {
         Schema::create('rental', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->unsignedBigInteger('id_user');
+
             $table->string("nama");
             $table->string("jenis_truk");
             $table->string("foto")->nullable();
             $table->string("alamat");
             $table->string("long");
             $table->string("lat");
+
+            $table->foreign('id_user')->references('id')->on('users');
+            
             $table->timestamps();
         });
     }
