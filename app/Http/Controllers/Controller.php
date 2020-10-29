@@ -11,6 +11,22 @@ use Illuminate\Support\Arr;
 
 class Controller extends BaseController
 {
+
+    protected function successResponse($data = null)
+    {
+        return response()->json([
+            'message' => 'success',
+            'data' => $data
+        ], 200);
+    }
+
+    protected function errorResponse($message, $status)
+    {
+        return response()->json([
+            'message' => $message
+        ], $status);
+    }
+    
     public function createRentalKriteria(Request $request){
         $input = $request->all();
         $kriterias = Kriteria::where('kode', $input['kode_kriteria'])->get();
