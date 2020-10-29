@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kriteria;
 use App\Models\RentalKriteria;
+use App\Models\Rental;
+use Illuminate\Database\Eloquent\Builder;
 
 class FuzzyTopsisController extends Controller
 {
@@ -172,7 +174,9 @@ class FuzzyTopsisController extends Controller
 
         // $bobot = $input['bobot'];
 
-        $rentalKriteria = RentalKriteria::with('kriteria.fuzzy')->get();
+        $rental = Rental::all()->keyBy('id');
+
+        $rentalKriteria = RentalKriteria::where('id_petani', $request->identity)->orWhere('id_petani', null)->with('kriteria.fuzzy')->get();
 
         $keterangan = $this->getKeterangan($rentalKriteria);
         $bobot = $input['bobot'];
@@ -186,6 +190,7 @@ class FuzzyTopsisController extends Controller
         }
 
         $matrikTernormalisasi = $this->matrikTernormalisasi($matriks, $keterangan);
+
         $matriksTerbobot = $this->matrikTerbobot($matrikTernormalisasi,$bobot);
         $idealPositif = $this->idealPositif($matriksTerbobot);
         $idealNegatif = $this->idealNegatif($matriksTerbobot);
@@ -196,22 +201,76 @@ class FuzzyTopsisController extends Controller
 
         $rangking = $this->rangking($nilaiPreferensi);
         
+        foreach ($rangking as &$value) {
+            $value = $rental[$value];
+        }
 
         return response()->json([
             'status' => 200,
             'message' => 'success',
             'data' => [
-                'matrik' => $matriks,
-                'matrikTernormalisasi' => $matrikTernormalisasi,
-                'matrikTerbobot' => $matriksTerbobot,
-                'idealPositif' => $idealPositif,
-                'idealNegatif' => $idealNegatif,
-                'dPlus' => $dPlus,
-                'dMin' => $dMin,
-                'nilaiPreferensi' => $nilaiPreferensi,
                 'rangking' => $rangking
             ]
         ], 200);
+    }
+
+    public function setLocation(Request $request){
+        // try {
+            $input = $this->validate($request, [
+                'long' => 'required|string',
+                'lat' => 'required|string',
+              ]);
+
+
+            $rental = Rental::all()->toArray();
+
+            $kriteria = Kriteria::where(['kode' => 'C5'])->get()->toArray();
+
+            foreach ($rental as $key => &$value) {
+                $distance = $this->getDistanceBetweenPoints($input['lat'], $input['long'], $value['lat'], $value['long']);
+                $value['distance'] = $distance['kilometers'];
+                foreach ($kriteria as $kr) {
+                    if ($distance['kilometers'] >= $kr['interval_min'] && $distance['kilometers'] <= $kr['interval_max']) {
+                        $c_rentalKriteria = RentalKriteria::where(['id_petani' => $request->identity, 'id_rental' => $value['id']])->whereHas('kriteria', function(Builder $query){
+                            $query->where(['kode' => 'C5']);
+                        });
+
+                        if ($c_rentalKriteria->first()) {
+                            $c_rentalKriteria->update([
+                                'id_kriteria' => $kr['id'],
+                                'input_nilai' => $distance['kilometers']
+                            ]);  
+                        }else{
+                            $i_rentalKriteria = new RentalKriteria();
+                            $i_rentalKriteria->id_rental = $value['id'];
+                            $i_rentalKriteria->id_kriteria = $kr['id'];
+                            $i_rentalKriteria->input_nilai = $distance['kilometers'];
+                            $i_rentalKriteria->id_petani = $request->identity;
+                            $i_rentalKriteria->save();                     
+                        }
+                    }
+                }
+            }
+
+            return response()->json($rental);
+
+            
+        // } catch (\Exception $e) {
+            
+        // }
+    }
+
+    public function getDistanceBetweenPoints($lat1, $lon1, $lat2, $lon2) {
+        $theta = $lon1 - $lon2;
+        $miles = (sin(deg2rad($lat1)) * sin(deg2rad($lat2))) + (cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)));
+        $miles = acos($miles);
+        $miles = rad2deg($miles);
+        $miles = $miles * 60 * 1.1515;
+        $feet = $miles * 5280;
+        $yards = $feet / 3;
+        $kilometers = $miles * 1.609344;
+        $meters = $kilometers * 1000;
+        return compact('miles','feet','yards','kilometers','meters'); 
     }
 
     //

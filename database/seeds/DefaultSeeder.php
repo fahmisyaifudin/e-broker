@@ -738,15 +738,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 5,
-                'id_rental' => 1,
-                'id_kriteria' => 25,
-                'input_nilai' => 3,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 6,
                 'id_rental' => 2,
                 'id_kriteria' => 1,
@@ -778,16 +769,6 @@ class DefaultSeeder extends Seeder
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
             ],
-            [
-                'id' => 10,
-                'id_rental' => 2,
-                'id_kriteria' => 27,
-                'input_nilai' => 13,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-
             [
                 'id' => 11,
                 'id_rental' => 3,
@@ -821,15 +802,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 15,
-                'id_rental' => 3,
-                'id_kriteria' => 28,
-                'input_nilai' => 16,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 16,
                 'id_rental' => 4,
                 'id_kriteria' => 4,
@@ -861,15 +833,6 @@ class DefaultSeeder extends Seeder
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
             ],
-            [
-                'id' => 20,
-                'id_rental' => 4,
-                'id_kriteria' => 26,
-                'input_nilai' => 6,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
             [
                 'id' => 21,
                 'id_rental' => 5,
@@ -903,15 +866,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 25,
-                'id_rental' => 5,
-                'id_kriteria' => 28,
-                'input_nilai' => 25,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 26,
                 'id_rental' => 6,
                 'id_kriteria' => 5,
@@ -943,15 +897,6 @@ class DefaultSeeder extends Seeder
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
             ],
-            [
-                'id' => 30,
-                'id_rental' => 6,
-                'id_kriteria' => 27,
-                'input_nilai' => 12,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
             [
                 'id' => 31,
                 'id_rental' => 7,
@@ -985,15 +930,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 35,
-                'id_rental' => 7,
-                'id_kriteria' => 28,
-                'input_nilai' => 24,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 36,
                 'id_rental' => 8,
                 'id_kriteria' => 5,
@@ -1025,15 +961,6 @@ class DefaultSeeder extends Seeder
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
             ],
-            [
-                'id' => 40,
-                'id_rental' => 8,
-                'id_kriteria' => 27,
-                'input_nilai' => 10,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
             [
                 'id' => 41,
                 'id_rental' => 9,
@@ -1067,15 +994,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 45,
-                'id_rental' => 9,
-                'id_kriteria' => 28,
-                'input_nilai' => 15,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 46,
                 'id_rental' => 10,
                 'id_kriteria' => 6,
@@ -1107,15 +1025,6 @@ class DefaultSeeder extends Seeder
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
             ],
-            [
-                'id' => 50,
-                'id_rental' => 10,
-                'id_kriteria' => 28,
-                'input_nilai' => 19,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
             [
                 'id' => 51,
                 'id_rental' => 11,
@@ -1149,15 +1058,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 55,
-                'id_rental' => 11,
-                'id_kriteria' => 29,
-                'input_nilai' => 32,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 56,
                 'id_rental' => 12,
                 'id_kriteria' => 6,
@@ -1189,15 +1089,6 @@ class DefaultSeeder extends Seeder
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
             ],
-            [
-                'id' => 60,
-                'id_rental' => 12,
-                'id_kriteria' => 28,
-                'input_nilai' => 25,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
             [
                 'id' => 61,
                 'id_rental' => 13,
@@ -1231,15 +1122,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 65,
-                'id_rental' => 13,
-                'id_kriteria' => 26,
-                'input_nilai' => 7,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 66,
                 'id_rental' => 14,
                 'id_kriteria' => 7,
@@ -1272,15 +1154,6 @@ class DefaultSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:m:s')
             ],
             [
-                'id' => 70,
-                'id_rental' => 14,
-                'id_kriteria' => 28,
-                'input_nilai' => 18,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-
-            [
                 'id' => 71,
                 'id_rental' => 15,
                 'id_kriteria' => 7,
@@ -1309,14 +1182,6 @@ class DefaultSeeder extends Seeder
                 'id_rental' => 15,
                 'id_kriteria' => 23,
                 'input_nilai' => 2018,
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s')
-            ],
-            [
-                'id' => 75,
-                'id_rental' => 15,
-                'id_kriteria' => 28,
-                'input_nilai' => 22,
                 'created_at' => date('Y-m-d H:m:s'),
                 'updated_at' => date('Y-m-d H:m:s')
             ]
