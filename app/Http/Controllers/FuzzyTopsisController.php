@@ -252,7 +252,10 @@ class FuzzyTopsisController extends Controller
                 }
             }
 
-            return response()->json($rental);
+            return response()->json([
+                'status' => 200,
+                'message' => 'success'
+            ]);
 
             
         // } catch (\Exception $e) {

@@ -20,6 +20,8 @@ $router->get('/', function () use ($router) {
 $router->post('hitung-topsis', 'Controller@hitungTopsis');
 $router->get('get-kendaraan', 'Controller@getKendaraan');
 
+$router->post('saving-matrik', 'SavingMatrikController@index');
+
 $router->post('login', 'AuthController@login');
 $router->post('register/petani', 'AuthController@petaniRegister');
 $router->post('register/rental', 'AuthController@rentalRegister');
