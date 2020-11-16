@@ -18,15 +18,21 @@ class SavingMatrikController extends Controller
     
     }
 
-    public function countDistance($route){
+    public function countDistance($route, $index){
         $i = 0;
         $j = 1;
         $sum = 0;
-        while (isset($route[$j])) {
-            $sum += $this->s_matrik[$route[$i]][$route[$j]];
-            $i++;
-            $j++;
+
+        if ($index != 0) {
+            while (isset($route[$j])) {
+                $sum += $this->s_matrik[$route[$i]][$route[$j]];
+                $i++;
+                $j++;
+            }
+        }else{
+            $sum = 2 * $this->s_matrik[$route[$i]][$route[$j]];
         }
+       
         return $sum;
     }
 
@@ -59,7 +65,7 @@ class SavingMatrikController extends Controller
         krsort($temp, SORT_NATURAL);
 
         $route = [0, 0];
-        
+        $index = 0;
         foreach ($temp as $key => $value) {
             $i = array_search($value[0], $route);
             $j = array_search($value[1], $route);
@@ -86,8 +92,8 @@ class SavingMatrikController extends Controller
                }
 
 
-               $distance_op1 = $this->countDistance($route_op1);
-               $distance_op2 = $this->countDistance($route_op2);
+               $distance_op1 = $this->countDistance($route_op1, $index);
+               $distance_op2 = $this->countDistance($route_op2, $index);
 
 
                if ($distance_op1 <= $distance_op2) {
@@ -95,6 +101,8 @@ class SavingMatrikController extends Controller
                }else{
                 $route = $route_op2;
                }
+               
+               $index++;
            }else{
             continue;
            }
