@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Kriteria;
 use App\Models\RentalKriteria;
 use App\Models\Rental;
+use App\Models\Petani;
 use Illuminate\Database\Eloquent\Builder;
 
 class FuzzyTopsisController extends Controller
@@ -176,7 +177,8 @@ class FuzzyTopsisController extends Controller
 
         $rental = Rental::all()->keyBy('id');
 
-        $rentalKriteria = RentalKriteria::where('id_petani', $request->identity)->orWhere('id_petani', null)->with('kriteria.fuzzy')->get();
+        $petani = Petani::where('id_user', $request->identity)->first();
+        $rentalKriteria = RentalKriteria::where('id_petani', $petani['id'])->orWhere('id_petani', null)->with('kriteria.fuzzy')->get();
 
         $keterangan = $this->getKeterangan($rentalKriteria);
         $bobot = $input['bobot'];
@@ -225,13 +227,14 @@ class FuzzyTopsisController extends Controller
             $rental = Rental::all()->toArray();
 
             $kriteria = Kriteria::where(['kode' => 'C5'])->get()->toArray();
+            $petani = Petani::where('id_user', $request->identity)->first(); 
 
             foreach ($rental as $key => &$value) {
                 $distance = $this->getDistanceBetweenPoints($input['lat'], $input['long'], $value['lat'], $value['long']);
                 $value['distance'] = $distance['kilometers'];
                 foreach ($kriteria as $kr) {
                     if ($distance['kilometers'] >= $kr['interval_min'] && $distance['kilometers'] <= $kr['interval_max']) {
-                        $c_rentalKriteria = RentalKriteria::where(['id_petani' => $request->identity, 'id_rental' => $value['id']])->whereHas('kriteria', function(Builder $query){
+                        $c_rentalKriteria = RentalKriteria::where(['id_petani' => $petani['id'], 'id_rental' => $value['id']])->whereHas('kriteria', function(Builder $query){
                             $query->where(['kode' => 'C5']);
                         });
 
@@ -245,7 +248,7 @@ class FuzzyTopsisController extends Controller
                             $i_rentalKriteria->id_rental = $value['id'];
                             $i_rentalKriteria->id_kriteria = $kr['id'];
                             $i_rentalKriteria->input_nilai = $distance['kilometers'];
-                            $i_rentalKriteria->id_petani = $request->identity;
+                            $i_rentalKriteria->id_petani = $petani['id'];
                             $i_rentalKriteria->save();                     
                         }
                     }

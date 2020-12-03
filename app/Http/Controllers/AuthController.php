@@ -56,7 +56,7 @@ class AuthController extends Controller
         return $this->errorResponse('Password or username wrong', 400);
 
       } catch (\Exception $e) {
-        return $this->errorResponse($e, 500);
+        return $this->errorResponse($e->getMessage(), 500);
       }
     }
 
@@ -87,7 +87,7 @@ class AuthController extends Controller
 
         } catch (\Exception $e) {
           DB::rollBack();
-          return $this->errorResponse($e, 500);
+          return $this->errorResponse($e->getMessage(), 500);
         }
         
     }
@@ -169,7 +169,7 @@ class AuthController extends Controller
 
       } catch (\Exception $e) {
           DB::rollBack();
-          return $this->errorResponse($e, 500);
+          return $this->errorResponse($e->getMessage(), 500);
       }
     }
 
