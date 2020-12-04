@@ -175,14 +175,14 @@ class FuzzyTopsisController extends Controller
 
         // $bobot = $input['bobot'];
 
-        $rental = Rental::all()->keyBy('id');
+        $rental = Rental::with('ratings')->get()->keyBy('id');
 
         $petani = Petani::where('id_user', $request->identity)->first();
         $rentalKriteria = RentalKriteria::where('id_petani', $petani['id'])->orWhere('id_petani', null)->with('kriteria.fuzzy')->get();
 
         $keterangan = $this->getKeterangan($rentalKriteria);
-        $bobot = $input['bobot'];
         // dd($bobot);
+        $bobot = $input['bobot'];
         foreach ($rentalKriteria as $key => $value) {
             $matriks[$value['id_rental']][] = [
                 $value['kriteria']['fuzzy']['fuzzy_num_a'],
@@ -217,7 +217,7 @@ class FuzzyTopsisController extends Controller
     }
 
     public function setLocation(Request $request){
-        // try {
+        try {
             $input = $this->validate($request, [
                 'long' => 'required|string',
                 'lat' => 'required|string',
@@ -261,9 +261,9 @@ class FuzzyTopsisController extends Controller
             ]);
 
             
-        // } catch (\Exception $e) {
-            
-        // }
+        } catch (\Exception $e) {
+            return $this->errorResponse($e->getMessage(), 500);   
+        }
     }
 
     public function getDistanceBetweenPoints($lat1, $lon1, $lat2, $lon2) {

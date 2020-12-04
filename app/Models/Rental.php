@@ -10,4 +10,9 @@ class Rental extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
+
+    public function ratings()
+    {
+        return $this->hasMany('App\Models\Rating', 'id_rental', 'id');
+    }
 }
