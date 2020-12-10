@@ -137,7 +137,6 @@ class TransactionController extends Controller
     public function create(Request $request){
         try {
             $input = $this->validate($request, [
-                'id_rental' => 'required',
                 'lokasi' => 'required',
             ]);
     
@@ -147,7 +146,6 @@ class TransactionController extends Controller
 
             $transaction = new Transaksi();
             $transaction->id_petani = $petani['id'];
-            $transaction->id_rental = $input['id_rental'];
             $transaction->status = 'Menunggu';
             $transaction->save();
             
@@ -157,6 +155,7 @@ class TransactionController extends Controller
                     $orderLokasi->id_transaksi = $transaction->id;
                     $orderLokasi->longitude = $value['longitude'];
                     $orderLokasi->latitude = $value['latitude'];
+                    $orderLokasi->kg_pick = $value['kg_pick'];
                     $orderLokasi->save();
                 }
             }

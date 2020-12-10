@@ -169,6 +169,68 @@ class FuzzyTopsisController extends Controller
         return $rangking;
     }
 
+    protected function averageRating($array){
+        $temp = 0;
+        if (count($array) > 0) {
+            foreach ($array as $key => $value) {
+                $temp += $value['nilai'];
+            }
+            return ($temp / count($array));
+        }else{
+            return null;
+        }
+    }
+
+    public function fullIndex(Request $request){
+        $input = $request->all();
+
+        // $bobot = $input['bobot'];
+
+        $rental = Rental::with('ratings')->get()->keyBy('id');
+
+        $petani = Petani::where('id_user', $request->identity)->first();
+        $rentalKriteria = RentalKriteria::where('id_petani', $petani['id'])->orWhere('id_petani', null)->with('kriteria.fuzzy')->get();
+
+        $keterangan = $this->getKeterangan($rentalKriteria);
+        // dd($bobot);
+        $bobot = $input['bobot'];
+        foreach ($rentalKriteria as $key => $value) {
+            $matriks[$value['id_rental']][] = [
+                $value['kriteria']['fuzzy']['fuzzy_num_a'],
+                $value['kriteria']['fuzzy']['fuzzy_num_b'],
+                $value['kriteria']['fuzzy']['fuzzy_num_c']
+            ]; 
+        }
+
+        $matrikTernormalisasi = $this->matrikTernormalisasi($matriks, $keterangan);
+
+        $matriksTerbobot = $this->matrikTerbobot($matrikTernormalisasi,$bobot);
+        $idealPositif = $this->idealPositif($matriksTerbobot);
+        $idealNegatif = $this->idealNegatif($matriksTerbobot);
+        $dPlus = $this->dPlus($matriksTerbobot, $idealPositif);
+        $dMin = $this->dMin($matriksTerbobot, $idealNegatif);
+
+        $nilaiPreferensi = $this->nilaiPreferensi($dPlus, $dMin);
+
+        $rangking = $this->rangking($nilaiPreferensi);
+        
+        foreach ($rangking as $key => &$value) {
+            $value = $rental[$value];
+            $value['rating'] = $this->averageRating($value['ratings']);
+            unset($value['ratings']);
+            $value['nilaiPreferensi'] = $nilaiPreferensi[$value['id']];
+        }
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'success',
+            'data' => [
+                'matriks' => $rentalKriteria,
+                'rangking' => $rangking
+            ]
+        ], 200);
+    }
+
 
     public function index(Request $request){
         $input = $request->all();
@@ -203,8 +265,11 @@ class FuzzyTopsisController extends Controller
 
         $rangking = $this->rangking($nilaiPreferensi);
         
-        foreach ($rangking as &$value) {
+        foreach ($rangking as $key => &$value) {
             $value = $rental[$value];
+            $value['rating'] = $this->averageRating($value['ratings']);
+            unset($value['ratings']);
+            $value['nilaiPreferensi'] = $nilaiPreferensi[$value['id']];
         }
 
         return response()->json([

@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('id_petani');
-            $table->unsignedBigInteger('id_rental');
+            $table->unsignedBigInteger('id_rental')->nullable();
             $table->enum('status', ['Menunggu', 'Diproses', 'Selesai']);
 
             $table->foreign('id_petani')->references('id')->on('petani');

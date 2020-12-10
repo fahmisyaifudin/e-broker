@@ -28,6 +28,7 @@ $router->post('register/rental', 'AuthController@rentalRegister');
 
 $router->group(['middleware' => 'jwt'], function() use ($router) {
     $router->post('fuzzy-topsis', 'FuzzyTopsisController@index');
+    $router->post('fuzzy-topsis-full', 'FuzzyTopsisController@fullIndex');
     $router->post('set-location', 'FuzzyTopsisController@setLocation');
 
     $router->post('transaksi/create', 'TransactionController@create');
