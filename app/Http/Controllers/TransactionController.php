@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Transaksi;
 use App\Models\OrderLokasi;
 use App\Models\Petani;
+use App\Models\Rental;
 use App\Models\Rating;
 
 class TransactionController extends Controller
