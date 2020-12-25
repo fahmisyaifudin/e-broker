@@ -169,6 +169,24 @@ class TransactionController extends Controller
         }
     }
 
+    public function create_2(Request $request){
+        try {
+            $input = $this->validate($request, [
+                'id_transaksi' => 'required',
+                'id_rental' => 'required'
+            ]);
+
+            $transaction = Transaksi::find($input['id_transaksi']);
+            $transaction->id_rental = $input['id_rental'];
+            $transaction->save();
+          
+            return $this->successResponse(null, 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return $this->errorResponse($e->getMessage(), 500);
+        }
+    }
+
     public function accept($id)
     {
         try {
@@ -221,7 +239,13 @@ class TransactionController extends Controller
     {
         try {
             $petani = Petani::where('id_user', $request->identity)->first();
-            $transaction = Transaksi::where('id_petani', $petani['id'])->get();
+            $rental = Rental::where('id_user', $request->identity)->first();
+
+
+            if ($petani) 
+                $transaction = Transaksi::where('id_petani', $petani['id'])->get();
+            else
+                $transaction = Transaksi::where('id_rental', $rental['id'])->get();
 
             return $this->successResponse($transaction, 200);
         } catch (\Exception $e) {
