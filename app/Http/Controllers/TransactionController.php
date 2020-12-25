@@ -163,7 +163,7 @@ class TransactionController extends Controller
 
             DB::commit();
 
-            return $this->successResponse(null, 200);
+            return $this->successResponse($transaction, 200);
         } catch (\Exception $e) {
             DB::rollback();
             return $this->errorResponse($e->getMessage(), 500);
