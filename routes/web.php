@@ -31,6 +31,8 @@ $router->group(['middleware' => 'jwt'], function() use ($router) {
     $router->post('fuzzy-topsis-full', 'FuzzyTopsisController@fullIndex');
     $router->post('set-location', 'FuzzyTopsisController@setLocation');
 
+    $router->get('rental/{id}', 'TransactionController@detailRental');
+
     $router->post('transaksi/create', 'TransactionController@create');
     $router->post('transaksi/create-2', 'TransactionController@create_2');
     $router->get('transaksi/view/{id}', 'TransactionController@view');

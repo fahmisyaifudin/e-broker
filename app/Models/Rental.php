@@ -15,4 +15,9 @@ class Rental extends Model
     {
         return $this->hasMany('App\Models\Rating', 'id_rental', 'id');
     }
+
+    public function rental_kriteria()
+    {
+        return $this->hasMany('App\Models\RentalKriteria', 'id_rental', 'id');
+    }
 }

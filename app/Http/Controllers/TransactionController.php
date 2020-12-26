@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Transaksi;
@@ -157,6 +159,7 @@ class TransactionController extends Controller
                     $orderLokasi->longitude = $value['longitude'];
                     $orderLokasi->latitude = $value['latitude'];
                     $orderLokasi->kg_pick = $value['kg_pick'];
+                    $orderLokasi->alamat = $value['alamat'];
                     $orderLokasi->save();
                 }
             }
@@ -249,6 +252,20 @@ class TransactionController extends Controller
                 $transaction = Transaksi::where('id_rental', $rental['id'])->get();
 
             return $this->successResponse($transaction, 200);
+        } catch (\Exception $e) {
+            return $this->errorResponse($e->getMessage(), 500);
+        }
+    }
+
+    public function detailRental(Request $request, $id)
+    {
+        try {
+            $petani = Petani::where('id_user', $request->identity)->first();
+            $rental = Rental::where('id', $id)
+                        ->with(['rental_kriteria' =>function($query) use ($petani){
+                            $query->where('id_petani', null)->orWhere('id_petani', $petani['id']);
+                        }, 'rental_kriteria.kriteria'])->first();
+            return $this->successResponse($rental, 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage(), 500);
         }

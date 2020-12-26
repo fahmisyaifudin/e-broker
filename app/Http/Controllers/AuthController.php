@@ -10,6 +10,7 @@ use App\Models\Rental;
 use App\Models\Petani;
 use App\Models\RentalKriteria;
 use App\Models\Kriteria;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -106,7 +107,9 @@ class AuthController extends Controller
              'kapasitas_muatan' => 'required|numeric',
              'kapasitas_mesin' => 'required|numeric',
              'harga_sewa' => 'required|integer',
-             'tahun' => 'required|integer'
+             'tahun' => 'required|integer',
+
+             'foto' => 'file|image'
           ]);
 
           DB::beginTransaction();
@@ -121,6 +124,13 @@ class AuthController extends Controller
           $rental->nama = $input['nama'];
           $rental->jenis_truk = $input['jenis_truk'];
           $rental->alamat = $input['alamat'];
+
+          if ($request->hasFile('foto')) {
+            $filename =  Str::random(32).'.'.$request->foto->extension();
+            $path = $request->file('foto')->move('storage/photo', $filename);
+            $rental->foto = 'storage/photo'.'/'.$filename;
+          }
+
           $rental->long = $input['long'];
           $rental->lat = $input['lat'];
           $rental->save();

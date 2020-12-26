@@ -18,6 +18,7 @@ class CreateOrderLocationTable extends Migration
             $table->unsignedBigInteger('id_transaksi');
             $table->string('longitude');
             $table->string('latitude');
+            $table->string('alamat')->nullable();
             $table->integer('kg_pick');
 
             $table->foreign('id_transaksi')->references('id')->on('transaksi');

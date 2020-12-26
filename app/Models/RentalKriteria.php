@@ -15,4 +15,5 @@ class RentalKriteria extends Model
     {
         return $this->hasOne('App\Models\Kriteria', 'id', 'id_kriteria');
     }
+
 }
