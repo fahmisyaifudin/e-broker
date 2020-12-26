@@ -225,7 +225,13 @@ class FuzzyTopsisController extends Controller
             'status' => 200,
             'message' => 'success',
             'data' => [
-                'matriks' => $rentalKriteria,
+                'matrikTernormalisasi' => $matrikTernormalisasi,
+                'matriksTerbobot' => $matriksTerbobot,
+                'idealPositif' => $idealPositif,
+                'idealNegatif' => $idealNegatif,
+                'dPlus' => $dPlus,
+                'dMin' => $dMin,
+                'nilaiPreferensi' => $nilaiPreferensi,
                 'rangking' => $rangking
             ]
         ], 200);
