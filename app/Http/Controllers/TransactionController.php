@@ -31,8 +31,8 @@ class TransactionController extends Controller
             $transaction = Transaksi::where('id', $id)->with('location')->first();
 
             $rute = $this->savingMatrik($transaction['location']);
-
-            for ($i=0; $i < 6; $i++) { 
+            
+            for ($i=0; $i < 5; $i++) { 
                 $route[$i]['longitude'] = $transaction['location'][$rute[$i]]['longitude'];
                 $route[$i]['latitude'] = $transaction['location'][$rute[$i]]['latitude'];
             }
