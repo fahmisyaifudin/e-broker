@@ -35,6 +35,8 @@ class TransactionController extends Controller
             for ($i=0; $i < 5; $i++) { 
                 $route[$i]['longitude'] = $transaction['location'][$rute[$i]]['longitude'];
                 $route[$i]['latitude'] = $transaction['location'][$rute[$i]]['latitude'];
+                $route[$i]['alamat'] = $transaction['location'][$rute[$i]]['alamat'];
+                $route[$i]['kg_pick'] = $transaction['location'][$rute[$i]]['kg_pick'];
             }
 
             $transaction['rute'] = $route;
